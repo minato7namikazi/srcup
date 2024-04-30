@@ -49,7 +49,7 @@ def single(
     if not latest_app_version:
         print("Warning: Failed to retrieve the latest available version of the app")
 
-    elif version.parse(__version__) < version.parse(latest_app_version):
+    elif version.parse(__version__) > version.parse(latest_app_version):
         print(f'Warning: A new version is available ({latest_app_version})\n')
         print(f'Please, update the app to continue:')
         print(f'  For pipx installation run:      pipx upgrade srcup')
