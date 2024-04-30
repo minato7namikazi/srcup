@@ -45,16 +45,7 @@ def single(
     use_ir: bool = typer.Option(False, help="Analyse Yul-IR instead of EVM bytecode"),
     debug_info: bool = typer.Option(True, help="Extract debug info from the build artifacts. This can help recover some high-level names."),
 ):
-    latest_app_version = asyncio.run(get_latest_app_version())
-    if not latest_app_version:
-        print("Warning: Failed to retrieve the latest available version of the app")
 
-    elif version.parse(__version__) > version.parse(latest_app_version):
-        print(f'Warning: A new version is available ({latest_app_version})\n')
-        print(f'Please, update the app to continue:')
-        print(f'  For pipx installation run:      pipx upgrade srcup')
-        print(f'  For plain pip installation run: pip install --upgrade git+https://github.com/Dedaub/srcup#egg=srcup')
-        return
 
     try:
         target = os.path.abspath(target)
